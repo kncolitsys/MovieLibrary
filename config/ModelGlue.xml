@@ -1,0 +1,57 @@
+<modelglue>
+<include template="./config/events/Movie.xml" />
+<include template="./config/events/Location.xml" />
+
+<controllers>
+	<controller name="MyController" type="Movies.controller.Controller">
+		<message-listener message="OnRequestStart" function="OnRequestStart" />
+		<message-listener message="OnQueueComplete" function="OnQueueComplete" />
+		<message-listener message="OnRequestEnd" function="OnRequestEnd" />
+		
+		<message-listener message="PrepareMovieInfo" function="PrepareMovieInfo" />
+		<message-listener message="PrepareMovieForm" function="PrepareMovieForm" />
+		<message-listener message="GetMoviesList" function="GetMoviesList" />
+		<message-listener message="GetDuplicateMoviesList" function="GetDuplicateMoviesList" />
+		<message-listener message="GetMovies" function="GetMovies" />
+		<message-listener message="GetDuplicateMovies" function="GetDuplicateMovies" />
+		<message-listener message="GetDuplicateMoviesByFormat" function="GetDuplicateMoviesByFormat" />
+	</controller>
+</controllers>
+
+<event-handlers>
+<event-handler name="page.index">
+	<broadcasts /> 
+
+	<results>
+		<result do="ListMovies" />
+		<result do="ApplicationTemplate" />
+	</results>
+
+	<views>
+		<include name="body" template="dspIndex.cfm" />
+	</views>
+</event-handler>
+
+<event-handler name="ApplicationTemplate">
+	<broadcasts />
+
+	<results />
+
+	<views>
+		<include name="template" template="dspTemplate.cfm" />
+	</views>
+</event-handler>
+
+<event-handler name="exception">
+	<broadcasts />
+
+	<results>
+		<result do="ApplicationTemplate" />
+	</results>
+
+	<views>
+		<include name="body" template="dspException.cfm" />
+	</views>
+</event-handler>
+</event-handlers>
+</modelglue>

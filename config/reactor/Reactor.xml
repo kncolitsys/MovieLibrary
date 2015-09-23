@@ -1,0 +1,13 @@
+<reactor>
+	<objects>
+		<object name="Movies">
+			<hasOne name="Formats">
+				<relate from="FormatID" to="ID" />
+			</hasOne>
+
+			<hasOne name="Locations">
+				<relate from="LocationID" to="ID" />
+			</hasOne>
+		</object>
+	</objects>
+</reactor>

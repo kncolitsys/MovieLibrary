@@ -1,0 +1,139 @@
+<modelglue>
+<event-handlers>
+
+<event-handler name="ListDuplicateMoviesByFormat" access="public">
+	<broadcasts>
+		<message name="GetDuplicateMoviesByFormat" />
+	</broadcasts>
+
+	<views>
+		<view name="body" template="dspListMoviesXml.cfm" />
+	</views>
+</event-handler>
+
+<event-handler name="ListDuplicateMovies" access="public">
+	<broadcasts>
+		<message name="GetDuplicateMovies" />
+	</broadcasts>
+
+	<views>
+		<view name="body" template="dspListMoviesXml.cfm" />
+	</views>
+</event-handler>
+
+<event-handler name="ListMoviesXml" access="public">
+	<broadcasts>
+		<message name="GetMovies" />
+	</broadcasts>
+
+	<views>
+		<view name="body" template="dspListMoviesXml.cfm" />
+	</views>
+</event-handler>
+
+<event-handler name="ListMovies" access="public">
+	<broadcasts>
+	</broadcasts>
+
+	<views>
+		<view name="body" template="dspListMovies.cfm">
+			<value name="DeleteEvent" value="DeleteMovie" overwrite="true" />
+			<value name="EditEvent" value="EditMovie" overwrite="true" />
+		</view>
+	</views>
+
+	<results>
+		<result do="ApplicationTemplate" />
+	</results>
+</event-handler>
+
+<event-handler name="EditMovie" access="public">
+	<broadcasts>
+		<message name="ModelGlue.genericList">
+			<argument name="criteria" value="" />
+			<argument name="object" value="Formats" />
+			<argument name="queryName" value="FormatsList" />
+		</message>
+
+		<message name="ModelGlue.genericList">
+			<argument name="criteria" value="" />
+			<argument name="object" value="Locations" />
+			<argument name="queryName" value="LocationsList" />
+		</message>
+
+		<message name="ModelGlue.genericRead">
+			<argument name="recordName" value="MoviesRecord" />
+			<argument name="criteria" value="ID" />
+			<argument name="object" value="Movies" />
+		</message>
+	</broadcasts>
+
+	<views>
+		<view name="body" template="frmMovies.cfm" append="true">
+			<value name="SaveMovieEvent" value="SaveMovie" overwrite="true" />
+		</view>
+	</views>
+
+	<results>
+		<result do="ApplicationTemplate" />
+	</results>
+</event-handler>
+
+<event-handler name="ViewMovie" access="public">
+	<broadcasts>
+		<message name="ModelGlue.genericRead">
+			<argument name="recordName" value="MoviesRecord" />
+			<argument name="criteria" value="ID" />
+			<argument name="object" value="Movies" />
+		</message>
+	</broadcasts>
+
+	<views>
+		<view name="body" template="dspMovie.cfm" append="true">
+			<value name="xe.list" value="ListMovies" overwrite="true" />
+		</view>
+	</views>
+
+	<results>
+		<result do="ApplicationTemplate" />
+	</results>
+</event-handler>
+
+<event-handler name="SaveMovie" access="public">
+	<broadcasts>
+		<message name="PrepareMovieInfo" />
+
+		<message name="ModelGlue.genericCommit">
+			<argument name="recordName" value="MoviesRecord" />
+			<argument name="criteria" value="ID" />
+			<argument name="object" value="Movies" />
+			<argument name="validationName" value="MoviesValidation" />
+			<argument name="properties" value="FormatID,LocationID,Name,IMDBLink" />
+		</message>
+	</broadcasts>
+
+	<results>
+		<result name="validationError" do="EditMovie" redirect="false" append="ID" preserveState="false" />
+	</results>
+</event-handler>
+
+<event-handler name="DeleteMovie" access="public">
+	<broadcasts>
+		<message name="ModelGlue.genericDelete">
+			<argument name="criteria" value="ID" />
+			<argument name="object" value="Movies" />
+		</message>
+	</broadcasts>
+</event-handler>
+
+<event-handler name="DeleteDuplicateMovie" access="public">
+	<broadcasts>
+		<message name="ModelGlue.genericDelete">
+			<argument name="criteria" value="ID" />
+			<argument name="object" value="Movies" />
+		</message>
+	</broadcasts>
+</event-handler>
+
+</event-handlers>
+</modelglue>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<Movies>
+		<ID>
+			<label>ID</label>
+			<comment/>
+			<maxlength>0</maxlength>
+			<notProvided>The ID field is required but was not provided.</notProvided>
+			<invalidType>The ID field does not contain valid data.  This field must be a numeric value.</invalidType>
+		</ID>
+		<FormatID>
+			<label>FormatID</label>
+			<comment/>
+			<maxlength>0</maxlength>
+			<notProvided>The FormatID field is required but was not provided.</notProvided>
+			<invalidType>The FormatID field does not contain valid data.  This field must be a numeric value.</invalidType>
+		</FormatID>
+		<LocationID>
+			<label>LocationID</label>
+			<comment/>
+			<maxlength>0</maxlength>
+			<invalidType>The LocationID field does not contain valid data.  This field must be a numeric value.</invalidType>
+		</LocationID>
+		<Name>
+			<label>Name</label>
+			<comment/>
+			<maxlength>255</maxlength>
+			<notProvided>The Name field is required but was not provided.</notProvided>
+			<invalidType>The Name field does not contain valid data.  This field must be a string value.</invalidType>
+			<invalidLength>The Name field is too long.  This field must be no more than 255 bytes long.</invalidLength>
+		</Name>
+		<IMDBLink>
+			<label>IMDBLink</label>
+			<comment/>
+			<maxlength>255</maxlength>
+			<invalidType>The IMDBLink field does not contain valid data.  This field must be a string value.</invalidType>
+			<invalidLength>The IMDBLink field is too long.  This field must be no more than 255 bytes long.</invalidLength>
+		</IMDBLink>
+		<DateInserted>
+			<label>DateInserted</label>
+			<comment/>
+			<maxlength>0</maxlength>
+			<invalidType>The DateInserted field does not contain valid data.  This field must be a date value.</invalidType>
+		</DateInserted>
+		<NumberOfDiscs>
+			<label>NumberOfDiscs</label>
+			<comment/>
+			<maxlength>0</maxlength>
+			<invalidType>The NumberOfDiscs field does not contain valid data.  This field must be a numeric value.</invalidType>
+		</NumberOfDiscs>
+		<Name>
+			<label>Name</label>
+			<comment/>
+			<maxlength>255</maxlength>
+			<notProvided>The Name field is required but was not provided.</notProvided>
+			<invalidType>The Name field does not contain valid data.  This field must be a string value.</invalidType>
+			<invalidLength>The Name field is too long.  This field must be no more than 255 bytes long.</invalidLength>
+		</Name>
+	</Movies>

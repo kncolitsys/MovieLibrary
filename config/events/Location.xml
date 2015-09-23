@@ -1,0 +1,36 @@
+<modelglue>
+<event-handlers>
+
+<event-handler name="EditLocation" access="public">
+	<broadcasts>
+		<message name="ModelGlue.genericRead">
+			<argument name="recordName" value="LocationsRecord" />
+			<argument name="criteria" value="ID" />
+			<argument name="object" value="Locations" />
+		</message>
+	</broadcasts>
+
+	<views>
+		<view name="body" template="frmLocations.cfm" append="true">
+			<value name="SaveLocationEvent" value="SaveLocation" overwrite="true" />
+		</view>
+	</views>
+
+	<results>
+		<result do="ApplicationTemplate" />
+	</results>
+</event-handler>
+
+<event-handler name="SaveLocation" access="public">
+	<broadcasts>
+		<message name="ModelGlue.genericCommit">
+			<argument name="recordName" value="LocationsRecord" />
+			<argument name="criteria" value="ID" />
+			<argument name="object" value="Locations" />
+			<argument name="properties" value="ID,Name" />
+		</message>
+	</broadcasts>
+</event-handler>
+
+</event-handlers>
+</modelglue>

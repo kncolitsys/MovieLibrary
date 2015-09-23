@@ -1,0 +1,19 @@
+This application required the existing install of Model-Glue unity.
+
+1. Extract the zip file to a root under your web root (or create a IIS virtual directory + CF mapping)
+2. Create database by executing the "createDatabase.sql" file in the "_setup" directory
+3. Create a sql user and grant it "dbowner" permissions to the "MoiveLibrary" database
+4. Setup a datasource in the CF Administrator to point to the newly created database.
+5. Edit the "ColdSpring.xml" file under the config directory:
+	- in the "reactorConfiguration" bean
+		- change the "pathToConfigXml" to match the path to "Reactor.xml" to your path defined in step 1
+		- change the "project" name if disired
+		- change the "dsn" to the datasource you created in step 4
+		- change the "mapping" to match the application path to your path defined in step 1
+6. Edit "Application.cfc" if desired to change the application settings such as "adminEmail"
+
+7. You are done. Go to the virutal directory or path defined in step 1 in your browser and start adding movies.
+
+If you run into trouble, please email me at boyank@gmail.com
+
+Boyan
